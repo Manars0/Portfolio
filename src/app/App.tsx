@@ -1,100 +1,147 @@
-import React, { useMemo, useState } from "react";
+import React from "react";
+import { Header } from "./components/Header";
 import { Sidebar } from "./components/Sidebar";
 import { ProjectSection, type Project } from "./components/ProjectSection";
-import { FilterMenu } from "./components/FilterMenu";
 
 const projects: Project[] = [
   {
-    id: "1",
+    id: "0",
     number: "01",
-    title: "Finch.",
-    category: "UX DESIGN",
+    title: "Twafuq Platform.",
+    category: "FRONTEND",
     description:
-      "A calm budgeting app concept built during a 48-hour fintech hackathon, focused on mindful spending habits.",
-    tools: ["Figma", "React", "Vercel"],
-    image: "/src/imports/image.png",
+      "A web-based platform developed during a hackathon, focused on simplifying user interactions through clean UI and intuitive flows. The experience was designed to reduce friction, improve accessibility, and deliver a clear, goal-driven journey for users within a limited timeframe.",
+    tools: ["Figma", "React", "GitHub", "Vercel"],
+    image: "/src/imports/tawafuq.png",
     imageAlt: "Finance app mockup on phone",
     link: "https://twafuq-builathon.vercel.app/",
+    hasLink: true,
+    hasDesignDetails: false,
+    designDetails: undefined,
+  },
+  {
+    id: "1",
+    number: "02",
+    title: "Social Media Carousel Design.",
+    category: "DESIGN",
+    description:
+      "A series of multi-slide social media posts designed to communicate ideas in a structured and engaging format. The layouts focus on visual hierarchy, clarity, and storytelling across slides to guide users smoothly from introduction to key message.",
+    tools: ["Figma", "Photoshop"],
+    image:"/src/imports/post.png",
+    imageAlt: "Job search app screens",
+    link: "#",
+    hasLink: false,
+    hasDesignDetails: false,
+    designDetails: undefined,
   },
   {
     id: "2",
-    number: "02",
-    title: "Pulse.",
-    category: "DASHBOARDS",
+    number: "03",
+    title: "Move Smart Mobile App.",
+    category: "UI/UX DESIGN",
     description:
-      "Internal analytics dashboard MVP for a SaaS startup — turning raw event data into clear, actionable views.",
-    tools: ["React", "Recharts", "SQL", "Supabase"],
-    image:
-      "https://images.unsplash.com/photo-1686061593213-98dad7c599b9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1600",
-    imageAlt: "Analytics dashboard on laptop",
-    link: "#",
+      "A mobile app concept designed during Naqlthon, focused on improving transportation experiences through clear navigation, structured flows, and user-friendly interfaces. The design emphasizes usability, accessibility, and smooth interaction across key user journeys.",
+    tools: ["Figma", "Photoshop", "Android Studio", "Google Maps API"],
+    image:"/src/imports/ms.png",
+    imageAlt: "Job search app screens",
+    link: "https://www.figma.com/proto/O99TOw7AwicB6kJetMXHTm/Naqlthon?node-id=36-1458&p=f&t=ENXig5Rq4B0bGZl9-0&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=75%3A90",
+    hasLink: true,
+    hasDesignDetails: true,
+    designDetails: [
+      {
+        title: "Design System",
+        description:
+          "A design system built around clarity, movement, and real-time interaction, reflecting the dynamic nature of transportation services.n/The color palette focuses on cool tones such as blue and green to represent trust, safety, and efficiency, while accent colors are used to highlight key actions and live updates.n/The system is designed to support quick decision-making, clear navigation, and a seamless user experience in time-sensitive scenarios.",
+        image: "/src/imports/ds.png",
+        },
+    ],
   },
   {
     id: "3",
-    number: "03",
-    title: "Atlas.",
-    category: "FRONTEND",
+    number: "04",
+    title: "Banking Mobile App UI.",
+    category: "UI/UX DESIGN",
     description:
-      "A frontend implementation of a location-aware travel app, built end-to-end as a portfolio MVP.",
-    tools: ["React", "Tailwind", "Mapbox"],
-    image:
-      "https://images.unsplash.com/photo-1767449441925-737379bc2c4d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1600",
-    imageAlt: "Travel app interface mockup",
-    link: "#",
+      "A modern banking app interface designed to present financial information in a clear, structured, and accessible way. The UI focuses on simplifying complex data through intuitive layouts, strong hierarchy, and a clean visual system.",
+    tools: ["Figma", "Photoshop"],
+    image:"/src/imports/ksu.png",
+    imageAlt: "Job search app screens",
+    link: "https://www.figma.com/make/1i3RTgS3M8o2pC21AUCTF1/Luxury-Skincare-Store-Design?t=dWGE8RZY51o7WURQ-0&fullscreen=1",
+    hasLink: true,
+    hasDesignDetails: true,
+    designDetails: [
+      {
+        title: "Design System",
+        description:
+          "A structured design system focused on trust, stability, and clarity, aligning with the expectations of financial products.n/A deep green palette was chosen to represent security, growth, and reliability, supported by neutral tones to maintain balance and readability. Accent colors are used carefully to highlight transactions, alerts, and key financial actions without overwhelming the user.n/The system ensures that complex financial data is presented in a clear, accessible, and user-friendly way.",
+        image: "/src/imports/ksuds.png",
+        },
+    ],
   },
   {
     id: "4",
-    number: "04",
-    title: "Hire.",
-    category: "UX DESIGN",
+    number: "05",
+    title: "Luxury Skincare Store Design.",
+    category: "UI/UX DESIGN",
     description:
-      "An end-to-end redesign exploration for a job search platform, presented as part of a product design challenge.",
-    tools: ["Figma", "Prototyping"],
-    image:
-      "https://images.unsplash.com/photo-1767449356630-c60094b1d1b4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1600",
+      "A clean and modern e-commerce interface focused on showcasing skincare products with a premium feel. The design emphasizes visual clarity, spacing, and hierarchy to enhance product browsing and create a smooth shopping experience.",
+    tools: ["Figma", "Photoshop"],
+    image:"/src/imports/skinCare.gif",
     imageAlt: "Job search app screens",
-    link: "#",
+    link: "https://www.figma.com/make/1i3RTgS3M8o2pC21AUCTF1/Luxury-Skincare-Store-Design?t=dWGE8RZY51o7WURQ-0&fullscreen=1",
+    hasLink: true,
+    hasDesignDetails: true,
+    designDetails: [
+      {
+        title: "Design System",
+        description:
+          "A refined design system crafted to reflect a premium and calming skincare experience.n/Soft, neutral tones and light colors were selected to create a sense of cleanliness, elegance, and trust, while subtle accents help guide user attention without disrupting the minimal aesthetic.n/The system focuses on visual balance, whitespace, and product clarity to enhance browsing and create a smooth, luxurious user experience..",
+        image: "/src/imports/sc.png",
+        },
+    ],
   },
+
+  {
+    id: "5",
+    number: "06",
+    title: "Smart Community Dashboard.",
+    category: "DASHBOARDS",
+    description:
+      "A data-driven dashboard designed to provide real-time insights into community operations, including energy usage, maintenance tracking, and resident engagement.The interface focuses on transforming complex data into clear, actionable visuals through structured layouts, intuitive charts, and a consistent design system.Special attention was given to readability, hierarchy, and scalability, ensuring the dashboard remains efficient and easy to navigate across different data scenarios..",
+    tools: ["Figma", "SQL", "Supabase"],
+    image: "/src/imports/SmartCommunity.gif",
+    imageAlt: "Analytics dashboard on laptop",
+    link: "https://www.figma.com/make/yWiPKDFlBvRHSuR2qqvDjf/Smart-Community-Dashboard?p=f&t=Wh6wctijZCoreJAu-0&fullscreen=1",
+    hasLink: true,
+  },
+  {
+    id: "6",
+    number: "07",
+    title: "Transportation Dashboard (Naqlthon).",
+    category: "DASHBOARDS",
+    description:
+      "A dashboard interface designed to monitor and manage transportation-related data efficiently. The layout focuses on clarity, quick data scanning, and structured information display to support better decision-making.",
+    tools: ["Figma", "SQL", "Supabase", "Google Maps API"],
+    image: "/src/imports/download.gif",
+    imageAlt: "Analytics dashboard on laptop",
+    link: "https://www.figma.com/proto/O99TOw7AwicB6kJetMXHTm/Naqlthon?node-id=196-3351&p=f&t=ENXig5Rq4B0bGZl9-0&scaling=contain&content-scaling=fixed&page-id=122%3A682&starting-point-node-id=196%3A2872",
+    hasLink: true,
+  },
+
 ];
 
 export default function App() {
-  const filters = ["All", "UX", "Frontend", "Dashboards"];
-  const [activeFilter, setActiveFilter] = useState("All");
-
-  const filteredProjects = useMemo(() => {
-    if (activeFilter === "All") return projects;
-
-    const categoryMap: Record<string, string> = {
-      UX: "UX DESIGN",
-      Frontend: "FRONTEND",
-      Dashboards: "DASHBOARDS",
-    };
-
-    return projects.filter(
-      (project) => project.category === categoryMap[activeFilter],
-    );
-  }, [activeFilter]);
-
   return (
     <div className="w-full min-h-screen bg-[#F7F7F5] text-[#111] antialiased">
+      <Header />
       <div className="mx-auto max-w-[1800px] lg:grid lg:grid-cols-[minmax(320px,38%)_minmax(0,1fr)]">
         <Sidebar />
-        <main className="w-full lg:h-screen lg:overflow-y-auto lg:scroll-smooth">
-          <FilterMenu
-            filters={filters}
-            active={activeFilter}
-            onChange={setActiveFilter}
-          />
+        <main className="w-full lg:scroll-smooth">
           <div className="px-5 py-10 md:px-8 md:py-12 lg:px-12 lg:py-14 xl:px-16">
-            {filteredProjects.map((project) => (
-            <ProjectSection key={project.id} project={project} />
-          ))}
+            {projects.map((project) => (
+              <ProjectSection key={project.id} project={project} />
+            ))}
           </div>
-          {filteredProjects.length === 0 && (
-            <p className="px-5 pb-12 text-[15px] text-neutral-500 md:px-8 lg:px-12 xl:px-16">
-              No projects in this category yet.
-            </p>
-          )}
         </main>
       </div>
     </div>
